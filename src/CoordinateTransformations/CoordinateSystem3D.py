@@ -17,3 +17,11 @@ class CoordinateSystem3D:
             [sp.Derivative(self.x1, x).doit(), sp.Derivative(self.x1, y).doit(), sp.Derivative(self.x1, z).doit()],
             [sp.Derivative(self.x2, x).doit(), sp.Derivative(self.x2, y).doit(), sp.Derivative(self.x2, z).doit()],
             [sp.Derivative(self.x3, x).doit(), sp.Derivative(self.x3, y).doit(), sp.Derivative(self.x3, z).doit()]])
+
+    def Multiply(self, Matrix, Vector):
+        x, y, z = sp.symbols("x y z")
+        for i in range(0, len(Matrix)):
+            for j in range(0, len(Matrix[i])):
+                Matrix[i][j] = Matrix[i][j].subs({x: Vector[0], y: Vector[1], z: Vector[2]})
+
+        return Matrix.dot(Vector)

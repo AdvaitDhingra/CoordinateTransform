@@ -5,11 +5,11 @@ from sympy import sin, cos
 
 x, y, z = sp.symbols('x y z')
 
-b = CoordinateSystem2D(x*cos(y), x*sin(y))
+b = CoordinateSystem2D(2*x, 2*y)
 
 matrix = b.TransformationMatrix();
 
-c = b.Multiply(matrix, np.array([1, 2]))
+c = b.Multiply(matrix, np.array([1, 1]))
 
 print(c)
 
