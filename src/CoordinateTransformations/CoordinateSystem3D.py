@@ -9,7 +9,7 @@ class CoordinateSystem3D:
         self.x2 = x2
         self.x3 = x3
 
-    def Transform(self):
+    def TransformationMatrix(self):
 
         x, y, z = sp.symbols("x y z")
 
