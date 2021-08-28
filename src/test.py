@@ -1,16 +1,10 @@
-from CoordinateTransformations import CoordinateSystem3D, CoordinateSystem2D
+from CoordinateTransformations import CoordinateSystem2D
 import sympy as sp
-import numpy as np
 from sympy import sin, cos
+import numpy as np
 
-x, y, z = sp.symbols('x y z')
-
-b = CoordinateSystem2D(2*x, 2*y)
-
-matrix = b.TransformationMatrix();
-
-c = b.Multiply(matrix, np.array([1, 1]))
-
-print(c)
-
-
+x, y = sp.symbols('x y')
+a = CoordinateSystem2D(x*cos(y), x*sin(y))
+matrix = a.TransformationMatrix()
+answer = a.Multiply(matrix, np.array([1, 2]))
+print(answer)
