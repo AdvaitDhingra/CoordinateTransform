@@ -9,14 +9,16 @@ class CoordinateSystem3D:
         self.x2 = x2
         self.x3 = x3
 
+        self.x, self.y, self.z = sp.symbols('x y z')
+
     def TransformationMatrix(self):
 
         x, y, z = sp.symbols("x y z")
 
         return np.array([
-            [sp.Derivative(self.x1, x).doit(), sp.Derivative(self.x1, y).doit(), sp.Derivative(self.x1, z).doit()],
-            [sp.Derivative(self.x2, x).doit(), sp.Derivative(self.x2, y).doit(), sp.Derivative(self.x2, z).doit()],
-            [sp.Derivative(self.x3, x).doit(), sp.Derivative(self.x3, y).doit(), sp.Derivative(self.x3, z).doit()]])
+            [sp.Derivative(self.x1, self.x).doit(), sp.Derivative(self.x1, self.y).doit(), sp.Derivative(self.x1, self.z).doit()],
+            [sp.Derivative(self.x2, self.x).doit(), sp.Derivative(self.x2, self.y).doit(), sp.Derivative(self.x2, self.z).doit()],
+            [sp.Derivative(self.x3, self.x).doit(), sp.Derivative(self.x3, self.y).doit(), sp.Derivative(self.x3, self.z).doit()]])
 
     def Multiply(self, Matrix, Vector):
         x, y, z = sp.symbols("x y z")
